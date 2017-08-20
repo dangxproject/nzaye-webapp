@@ -3,56 +3,33 @@ import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 
-import './index.css'
-
-const Header = () =>
-  <div
-    style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
-    }}
-  >
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: 'white',
-            textDecoration: 'none',
-          }}
-        >
-          NZ, aye?!
-        </Link>
-      </h1>
-    </div>
-  </div>
+import Header from '../components/header';
+import Footer from '../components/footer';
 
 const TemplateWrapper = ({ children }) =>
-  <div>
+  <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <Helmet
-      title="Gatsby Default Starter"
+      title="NZ, aye!"
       meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
+        { name: 'description', content: 'News around New Zealand from various sources' },
+        { name: 'keywords', content: 'news, nz, New Zealand, feed, rss' },
+        { name: 'theme-color', content: '#000000'},
+      ]}
+      link={[
+          { type: "text/css", rel:"stylesheet", href:"https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" },
+          { type: "text/css", rel:"stylesheet", href:"https://fonts.googleapis.com/icon?family=Material+Icons" },
+          { type: "text/css", rel:"stylesheet", href:"https://fonts.googleapis.com/css?family=Special+Elite"},
+          { type: "text/css", rel:"stylesheet", href:"https://code.getmdl.io/1.3.0/material.min.css"},
+          { type: "text/css", rel:"stylesheet", href:"/style.css"}
+      ]}
+      style={[
+        //   { cssText: `{customStyles}` }
       ]}
     />
     <Header />
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
-      }}
-    >
-      {children()}
-    </div>
+    {children()}
+    <Footer />
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   </div>
 
 TemplateWrapper.propTypes = {
